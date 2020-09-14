@@ -70,8 +70,8 @@
     group: root
     mode: 0644
   notify:
-    - Reload systemd
-    - Restart docker
+    - reload systemd
+    - restart docker
   when: docker_opts != "" and ansible_distribution_version|version_compare(15.04, '>=')
 
 - name: Ensure docker daemon options used (systemd)
@@ -79,8 +79,8 @@
     src: docker.conf
     dest: /etc/systemd/system/docker.service.d/docker.conf
   notify:
-    - Reload systemd
-    - Restart docker
+    - reload systemd
+    - restart docker
   when: docker_opts != "" and ansible_distribution_version|version_compare(15.04, '>=')
 
 - name: Fix DNS in docker.io
